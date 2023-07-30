@@ -1,8 +1,8 @@
 import express, { Router } from 'express'
 import cors from 'cors'
 import { connectDb } from './db/database.js'
-import { User } from './model/userModel.js'
-import bcrypt from 'bcrypt'
+// import { User } from './model/userModel.js'
+// import bcrypt from 'bcrypt'
 import bodyParser from 'body-parser'
 import  jwt  from 'jsonwebtoken'
 import cookieParser from 'cookie-parser'
@@ -14,7 +14,7 @@ dotenv.config()
 
 // middlerwares
 app.use(express.json())
-app.use(cors({credentials:true,origin:['https://writevix.vercel.app', 'http://localhost:3000']}))
+app.use(cors({credentials:true,origin:['https://blog-manch-frontend.vercel.app/', 'http://localhost:3000']}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use('/', userRouter)
@@ -29,9 +29,6 @@ app.get("/", (req, res) => {
 		message: "worked",
 	})
 })
-
-
-
 
 app.get("/profile", (req,res)=>{
 	const {token} = req.cookies
