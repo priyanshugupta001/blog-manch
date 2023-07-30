@@ -6,7 +6,7 @@ import App from './App';
 
 
 
-export const server = 'https://blog-manch.vercel.app/'
+export const server = 'https://blog-manch.vercel.app'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
