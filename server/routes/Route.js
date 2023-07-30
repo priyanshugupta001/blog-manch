@@ -17,7 +17,6 @@ router.get("/logout", logout)
 //post
 router.post("/createpost", isUser, createPost)
 router.patch("/createpost", isUser, updatePost)
-// router.get("/readpost", isAuthenticated ,readPost)
 router.get("/readpost", isUser, readPost)
 router.get("/readpost/:id", readid)
 router.get("/myBlog", isUser, myBlog)
