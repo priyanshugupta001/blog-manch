@@ -14,7 +14,7 @@ dotenv.config()
 
 // middlerwares
 app.use(express.json())
-app.use(cors({credentials:true,origin:['https://blog-manch-frontend.vercel.app/', 'http://localhost:3000']}))
+app.use(cors({credentials:true,origin:['https://blog-manch-frontend.vercel.app/','https://blog-manch-by-priyanshu.vercel.app/', 'http://localhost:3000']}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use('/', userRouter)
