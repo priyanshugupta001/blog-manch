@@ -22,12 +22,11 @@ export const signupUser = async (req, res) => {
 
 	} catch (error) {
 		console.log(error);
-		// res.status(400).json(error)
+		res.status(400).json(error)
 	}
 }
 
 export const loginuser = async (req, res) => {
-	// console.log(req.body.password);
 	try {
 		const { username, password } = req.body
 		const user = await User.findOne({ username })
@@ -46,24 +45,11 @@ export const loginuser = async (req, res) => {
 		jwt.sign({ username, id: user._id }, process.env.JWT_SECRET_KEY, {}, (err, token) => {
 			if (err) throw err
 			res.json({ message: `welcome back ${user.username}`, token: token, username: user.username })
-
-			// .status(200).cookie("token", token, {
-			// 	httpOnly: true,
-			// 	maxAge: 15 * 60 * 1000,
-			// 	//SameSite is a browser security mechanism that determines when a website's cookies are included in requests originating from other websites
-
-			// })
-
 		})
-
-
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json(error)
 	}
-
-
-
 }
 
 

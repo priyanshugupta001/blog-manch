@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
@@ -10,10 +10,6 @@ const Home = () => {
         <Navbar />
         <div className="flex justify-center items-center h-screen">
 
-
-
-
-          
         </div>
       </div>
     </>

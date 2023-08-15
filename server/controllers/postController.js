@@ -1,4 +1,4 @@
-import multer from "multer"
+// import multer from "multer"
 import { PostModel } from "../model/postModel.js"
 
 
@@ -33,8 +33,7 @@ export const updatePost = async (req, res) => {
 }
 
 export const readPost = async (req, res) => {
-	const posts = await
-		PostModel.find().sort({ createdAt: -1 }).limit(20).populate({ path: 'userId', select: 'username' })
+	const posts = await PostModel.find().sort({ createdAt: -1 }).limit(20).populate({ path: 'userId', select: 'username' })
 	res.json(posts)
 }
 
