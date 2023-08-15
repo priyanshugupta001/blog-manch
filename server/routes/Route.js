@@ -8,7 +8,7 @@ const router = express.Router()
 
 
 
-router.post("/register", signupUser)
+router.post("/register", signupUser)  //user kuch content dega
 router.post("/login", loginuser)
 router.get("/logout", logout)
 

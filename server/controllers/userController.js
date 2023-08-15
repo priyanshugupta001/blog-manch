@@ -11,8 +11,14 @@ export const signupUser = async (req, res) => {
 		let user = await User.findOne({ email })
 		let uname = await User.findOne({ username })
 
-		if (user) return res.status(400).json({ success: false, message: "User Already exist" })
-		else if (uname) return res.status(400).json({ success: false, message: "Please Choose Another Username" })
+		if (user){
+			alert("user already exist")
+			return res.status(400).json({ success: false, message: "User Already exist" })
+		} 
+		else if(uname) {
+			alert("please choose another username")
+			 return res.status(400).json({ success: false, message: "Please Choose Another Username" })
+		}
 
 		const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -31,16 +37,20 @@ export const loginuser = async (req, res) => {
 		const { username, password } = req.body
 		const user = await User.findOne({ username })
 
-		if (!user) return res.status(400).json({
+		if (!user) {
+			alert("Invalid username")
+			return res.status(400).json({
 			success: false,
-			message: "Invalid username id or password"
-		})
+			message: "Invalid username"
+		})}
 
 		const isMAtch = await bcrypt.compare(password, user.password)
-		if (!isMAtch) return res.status(400).json({
+		if (!isMAtch) {
+			alert("Invalid password")
+			return res.status(400).json({
 			success: false,
-			message: "Invalid username id or password"
-		})
+			message: "Invalid password"
+		})}
 
 		jwt.sign({ username, id: user._id }, process.env.JWT_SECRET_KEY, {}, (err, token) => {
 			if (err) throw err

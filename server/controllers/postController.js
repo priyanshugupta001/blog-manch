@@ -6,7 +6,7 @@ export const createPost = async (req, res) => {
 	try {
 		const { title, summary, content, image } = req.body
 		const postDoc = await PostModel.create({ title, summary, content, image, userId: req.user.id })
-
+		alert("Post submitted successfully")
 		res.status(200).json({ success: true, message: "Post Submitted Successfully", postDoc })
 
 	} catch (error) {
@@ -24,6 +24,7 @@ export const updatePost = async (req, res) => {
 		}
 
 		await updateDoc.updateOne({title,summary,content,image})
+		alert("Post Updated successfully")
 		res.status(200).json({ success: true, message: "Post Updated Successfully", updateDoc })
 
 	} catch (error) {
@@ -66,6 +67,8 @@ export const myBlog = async (req, res) => {
 export const deleteMyblog = async (req, res) => {
 	try {
 		const { id } = req.params
+		console.log(id)
+		alert("Post deleted Successfully")
 		await PostModel.findByIdAndDelete(id)
 		res.status(200).json({ success: true, message: "Post deleted Successfully" })
 	} catch (error) {
