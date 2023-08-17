@@ -22,7 +22,11 @@ const Dataprovider = ({ children }) => {
 		// Check if token exists in local storage
 
 		if (extractToken()) {
+<<<<<<< HEAD
 			// setToken(extractToken());
+=======
+			setToken(extractToken());
+>>>>>>> 83e7669d07b373b11b503b87911eb755074eb2b0
 			if (location.pathname === "/login" || location.pathname === "/") {
 				navigate("/home")
 			}
@@ -45,7 +49,11 @@ const Dataprovider = ({ children }) => {
 
 
 	return (
+<<<<<<< HEAD
 		<Datacontext.Provider value={{ account, setAccount }}>
+=======
+		<Datacontext.Provider value={{ account, setAccount, setToken, setIsLoggedIn }}>
+>>>>>>> 83e7669d07b373b11b503b87911eb755074eb2b0
 			{children}
 		</Datacontext.Provider>
 	)

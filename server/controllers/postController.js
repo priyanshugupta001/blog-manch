@@ -6,7 +6,7 @@ export const createPost = async (req, res) => {
 	try {
 		const { title, summary, content, image } = req.body
 		const postDoc = await PostModel.create({ title, summary, content, image, userId: req.user.id })
-		// alert("Post submitted successfully")
+
 		res.status(200).json({ success: true, message: "Post Submitted Successfully", postDoc })
 
 	} catch (error) {

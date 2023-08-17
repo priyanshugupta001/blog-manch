@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import express from 'express' 	//Express is a popular web application framework for Node.js.
+=======
+import express, { Router } from 'express' 	//Express is a popular web application framework for Node.js.
+>>>>>>> 83e7669d07b373b11b503b87911eb755074eb2b0
 import cors from 'cors'						//CORS or Cross-Origin Resource Sharing in Node. js is a mechanism by which a front-end client can make requests for resources to an external back-end server.
 
 
@@ -22,6 +26,7 @@ import userRouter from './routes/Route.js'
 const app = express()						//This line creates an instance of the Express application, which is the central part of your web server.
 
 dotenv.config()			//This line loads the environment variables from the .env file into process.env.
+<<<<<<< HEAD
 
 
 
@@ -40,6 +45,24 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); // Use the configured CORS options
   
+=======
+
+// middlerwares
+app.use(express.json()) //This line is a middleware that parses incoming JSON data and makes it available in req.body.
+
+// Below lines configure the CORS options for the server. It allows requests from the specified origin and includes credentials (cookies) in the CORS request.
+const corsOptions = {
+	credentials: true,
+	origin: 'https://blog-manch-frontend.vercel.app', // Allow requests from this specific origin
+	// origin: 'http://localhost:3000'
+};
+app.use(cors(corsOptions)); // Use the configured CORS options
+  
+
+
+app.use(bodyParser.json())	//Parses the text as JSON and exposes the resulting object on req.body.
+app.use(cookieParser())	
+>>>>>>> 83e7669d07b373b11b503b87911eb755074eb2b0
 
 app.use('/', userRouter)	//This line attaches the userRouter middleware to the root path ('/') of the application. The userRouter is defined in another file and contains the route handlers for user-related endpoints.
 
