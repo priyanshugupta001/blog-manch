@@ -24,11 +24,9 @@ export const signupUser = async (req, res) => {
 		console.log(error);
 		// res.status(400).json(error)
 	}
-
 }
 
 export const loginuser = async (req, res) => {
-
 	// console.log(req.body.password);
 	try {
 		const { username, password } = req.body
