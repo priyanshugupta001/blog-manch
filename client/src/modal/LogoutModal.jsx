@@ -1,11 +1,12 @@
 import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 const LogoutModal = ({ setModel }) => {
   const naviGate = useNavigate();
   const logout = () => {
-    localStorage.removeItem("token");
+	localStorage.removeItem("token");
     toast.success("Logout Successfully", {
       position: "top-center",
       autoClose: 3000,
@@ -21,11 +22,12 @@ const LogoutModal = ({ setModel }) => {
   return (
     <>
       <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[100] ">
-        <div className={
-          "relative h-[25vh] w-[80vw] md:w-[40vw]  bg-white rounded-lg md:h-[40vh]"
-        }
+        <div
+          className={
+            "relative h-[25vh] w-[80vw] md:w-[40vw]  bg-white rounded-lg md:h-[40vh]"
+          }
         >
-
+        
 
           <div className="flex justify-center items-center flex-col h-full gap-y-5">
             <p className={`font-semibold text-base `}>Are you sure you want to logout.</p>

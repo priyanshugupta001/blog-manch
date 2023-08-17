@@ -4,14 +4,13 @@ import { Link, Navigate, json, useNavigate } from "react-router-dom";
 import { server } from "..";
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 const Signup = () => {
-  // const [name, setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [redirect, setRedirect] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,7 +67,6 @@ const Signup = () => {
   };
 
   if (redirect) {
-
     return <Navigate to={"/login"} />;
   }
   return (
@@ -110,7 +108,7 @@ const Signup = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required 
+                required
               />
             </div>
             <div className="mb-6">

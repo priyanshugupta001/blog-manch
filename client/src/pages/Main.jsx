@@ -22,10 +22,11 @@ const Main = () => {
             Authorization: `Bearer ${extractToken()}`,
           },
         })
-        .then((res) => {
+          .then((res) => {
             setPost(res.data);
+            
           })
-        .catch((err) => {
+          .catch((err) => {
             toast.error(err?.message, {
               position: "top-center",
               autoClose: 3000,

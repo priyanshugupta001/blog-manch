@@ -1,14 +1,12 @@
-// import axios from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/Dataprovider";
-// import { server } from "..";
+import { server } from "..";
 import { Transition } from "@headlessui/react";
 import logo from "../assets/logo.jpeg";
 import extractToken from "../utils/GetToken";
 import LogoutModal from "../modal/LogoutModal";
-
-
 const Navbar = () => {
   const { account, setAccount } = UserAuth();
   const naviGate = useNavigate();
@@ -160,8 +158,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        
         <Transition
           show={isOpen}
           enter="transition-opacity duration-500"

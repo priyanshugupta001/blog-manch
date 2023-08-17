@@ -11,14 +11,8 @@ export const signupUser = async (req, res) => {
 		let user = await User.findOne({ email })
 		let uname = await User.findOne({ username })
 
-		if (user){
-			alert("user already exist")
-			return res.status(400).json({ success: false, message: "User Already exist" })
-		} 
-		else if(uname) {
-			alert("please choose another username")
-			 return res.status(400).json({ success: false, message: "Please Choose Another Username" })
-		}
+		if (user) return res.status(400).json({ success: false, message: "User Already exist" })
+		else if (uname) return res.status(400).json({ success: false, message: "Please Choose Another Username" })
 
 		const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -28,38 +22,50 @@ export const signupUser = async (req, res) => {
 
 	} catch (error) {
 		console.log(error);
-		res.status(400).json(error)
+		// res.status(400).json(error)
 	}
+
 }
 
 export const loginuser = async (req, res) => {
+
+	// console.log(req.body.password);
 	try {
 		const { username, password } = req.body
 		const user = await User.findOne({ username })
 
-		if (!user) {
-			alert("Invalid username")
-			return res.status(400).json({
+		if (!user) return res.status(400).json({
 			success: false,
-			message: "Invalid username"
-		})}
+			message: "Invalid username id or password"
+		})
 
 		const isMAtch = await bcrypt.compare(password, user.password)
-		if (!isMAtch) {
-			alert("Invalid password")
-			return res.status(400).json({
+		if (!isMAtch) return res.status(400).json({
 			success: false,
-			message: "Invalid password"
-		})}
+			message: "Invalid username id or password"
+		})
 
 		jwt.sign({ username, id: user._id }, process.env.JWT_SECRET_KEY, {}, (err, token) => {
 			if (err) throw err
 			res.json({ message: `welcome back ${user.username}`, token: token, username: user.username })
+
+			// .status(200).cookie("token", token, {
+			// 	httpOnly: true,
+			// 	maxAge: 15 * 60 * 1000,
+			// 	//SameSite is a browser security mechanism that determines when a website's cookies are included in requests originating from other websites
+
+			// })
+
 		})
+
+
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json(error)
 	}
+
+
+
 }
 
 

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
@@ -6,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Main from './pages/Main';
 import { Dataprovider } from './context/Dataprovider';
+import { useEffect, useState } from 'react';
 import CreatePost from './pages/CreatePost';
 import ViewFull from './pages/ViewFull';
 import MyPost from './pages/MyPost';
@@ -23,10 +23,11 @@ import EditPost from './pages/EditPost';
 // }
 
 function App() {
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false) ;
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false)
+
   const [internetStatus, setInternetStatus] = useState(navigator.onLine);
 
-  useEffect(() => {  // The useEffect hook is used to perform side effects in functional components. It takes two arguments: a function and an array of dependencies. In this case, the dependency array is empty ([]), which means the effect will only run once when the component is mounted.
+  useEffect(() => {
     const handleOnline = () => {
       setInternetStatus(true);
     };
@@ -44,24 +45,23 @@ function App() {
     };
   }, []);
 
-
   return (
     <>
-      <Router>   {/*This provides the routing functionality to the application. */}
+      <Router>
         <Dataprovider>
 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/login' element={<Login setIsUserAuthenticated={setIsUserAuthenticated} />} />
             <Route path='/signup' element={<Signup />} />
-            {/* <Route path='/' element={<PrivateRoute isUserAuthenticated={isUserAuthenticated}/>}/> */}
+            {/* <Route path='/' element={<PrivateRoute isUserAuthenticated={isUserAuthenticated}/>}> */}
 
             <Route path='/home' element={<Main />} />
             <Route path='/home/:id' element={<ViewFull />} />
             <Route path='/create' element={<CreatePost />} />
             <Route path='/post' element={<MyPost />} />
             <Route path='/edit-post/:id' element={<EditPost />} />
-            
+            {/* </Route> */}
           </Routes>
         </Dataprovider>
       </Router>

@@ -1,4 +1,4 @@
-// import multer from "multer"
+import multer from "multer"
 import { PostModel } from "../model/postModel.js"
 
 
@@ -24,7 +24,6 @@ export const updatePost = async (req, res) => {
 		}
 
 		await updateDoc.updateOne({title,summary,content,image})
-		alert("Post Updated successfully")
 		res.status(200).json({ success: true, message: "Post Updated Successfully", updateDoc })
 
 	} catch (error) {
@@ -34,7 +33,8 @@ export const updatePost = async (req, res) => {
 }
 
 export const readPost = async (req, res) => {
-	const posts = await PostModel.find().sort({ createdAt: -1 }).limit(20).populate({ path: 'userId', select: 'username' })
+	const posts = await
+		PostModel.find().sort({ createdAt: -1 }).limit(20).populate({ path: 'userId', select: 'username' })
 	res.json(posts)
 }
 
@@ -67,8 +67,6 @@ export const myBlog = async (req, res) => {
 export const deleteMyblog = async (req, res) => {
 	try {
 		const { id } = req.params
-		console.log(id)
-		alert("Post deleted Successfully")
 		await PostModel.findByIdAndDelete(id)
 		res.status(200).json({ success: true, message: "Post deleted Successfully" })
 	} catch (error) {

@@ -8,7 +8,6 @@ const isUser = (req, res, next) => {
 			req["user"] = data
 			next();
 		} else {
-			alert("unauthorized access")
 			return res.json({ error: true, message: "Unauthorized access" });
 		}
 	} catch (err) {
