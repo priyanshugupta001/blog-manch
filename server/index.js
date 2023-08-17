@@ -19,7 +19,7 @@ app.use(express.json())
 
 const corsOptions = {
 	credentials: true,
-	origin: 'https://blog-manch-frontend.vercel.app', // Allow requests from this specific origin
+	origin: 'https://blog-manch-frontend.vercel.app' // Allow requests from this specific origin
 	// origin: 'http://localhost:3000'
 };
 app.use(cors(corsOptions));
