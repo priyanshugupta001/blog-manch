@@ -16,10 +16,10 @@ dotenv.config()
 app.use(express.json())
 const corsOptions = {
 	credentials: true,
-	origin: 'https://blog-manch-frontend.vercel.app', // Allow requests from this specific origin
+	origin: 'https://blog-manch-frontend.vercel.app' // Allow requests from this specific origin
   };
   
-  app.use(cors(corsOptions)); // Use the configured CORS options
+app.use(cors(corsOptions)); // Use the configured CORS options
   
 app.use(bodyParser.json())
 app.use(cookieParser())
